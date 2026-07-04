@@ -1,0 +1,1179 @@
+/* Gabungan dari app.scss, _variables.scss, dan _theme.scss */
+@import url("https://fonts.bunny.net/css?family=Poppins:400,500,600,700&display=swap");
+
+/* Variabel tema yang diperbarui */
+:root {
+    --color-primary: #6c5ce7; /* Warna ungu yang lebih dalam */
+    --color-accent: #00d8d6; /* Warna teal cerah */
+    --color-bg: #f0f2f5; /* Latar belakang abu-abu terang yang lembut */
+    --color-card: #ffffff;
+    --color-text-dark: #2d3436; /* Warna teks gelap */
+    --color-text-muted: #636e72; /* Warna teks abu-abu tua untuk keterangan */
+    --color-border: #dfe6e9; /* Warna border yang lembut */
+    --radius: 12px;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Base */
+body {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(108, 92, 231, 0.08) 0%,
+            rgba(0, 216, 214, 0.04) 100%
+        ),
+        var(--color-bg);
+    color: var(--color-text-dark);
+    font-family: "Poppins", sans-serif; /* Menggunakan Poppins */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    padding-top: 0;
+}
+
+.site-container {
+    padding: 4rem 1.5rem; /* Padding lebih besar */
+}
+
+/* Hero Card (Digunakan di detail panduan) */
+.hero-card {
+    background: var(--color-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md); /* Shadow yang lebih menonjol */
+    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    border: 1px solid var(--color-border); /* Border tipis */
+}
+.hero-card:hover {
+    transform: translateY(-8px); /* Efek naik yang lebih terasa */
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-image {
+    width: 100%;
+    height: 380px; /* Tinggi gambar lebih besar */
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.95); /* Sedikit redup agar teks lebih menonjol */
+}
+
+.content-wrap {
+    padding: 2.5rem 3rem; /* Padding lebih besar di dalam kartu */
+}
+
+h1.page-title {
+    font-size: 2.8rem; /* Ukuran judul lebih besar */
+    letter-spacing: -0.03em;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: var(--color-primary); /* Judul warna primer */
+}
+
+.meta {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.section-title {
+    font-size: 1.4rem; /* Ukuran judul bagian lebih besar */
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-text-dark);
+    border-bottom: 2px solid var(--color-accent); /* Garis bawah accent */
+    display: inline-block;
+    padding-bottom: 0.3rem;
+}
+
+.prose {
+    color: var(--color-text-dark);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.benefit-list {
+    padding-left: 1.5rem;
+    list-style: none; /* Hapus bullet default */
+}
+.benefit-list li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+}
+.benefit-list li span:first-child {
+    /* Icon */
+    color: var(--color-accent);
+    margin-right: 0.8rem;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.benefit-list li span.prose {
+    font-size: 1.05rem;
+}
+
+/* Tombol Umum */
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(
+        45deg,
+        var(--color-primary),
+        var(--color-accent)
+    ); /* Gradient yang lebih dinamis */
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.8rem; /* Padding lebih besar */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.25); /* Shadow yang lebih kuat */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+}
+.btn-cta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(108, 92, 231, 0.35);
+}
+
+.btn-secondary-soft {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    font-weight: 500;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+    text-decoration: none;
+}
+.btn-secondary-soft:hover {
+    background: var(--color-border);
+    border-color: var(--color-text-muted);
+    color: var(--color-primary);
+}
+
+/* Class Tambahan untuk Efek Hover WA */
+.btn-wa-hover {
+    /* Pastikan transisi halus saat perubahan warna */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* cubic-bezier memberikan efek 'bouncy' sedikit saat transisi agar terasa premium */
+}
+
+/* KETIKA DI-HOVER (Mouse Menempel) */
+.btn-wa-hover:hover {
+    /* 1. Ubah background jadi Gradasi Hijau Modern */
+    background-image: linear-gradient(
+        135deg,
+        #25d366 0%,
+        #128c7e 100%
+    ) !important;
+
+    /* 2. Ubah warna teks & icon jadi Putih */
+    color: white !important;
+
+    /* 3. Efek Glowing Hijau */
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+
+    /* 4. Tombol naik sedikit ke atas */
+    transform: translateY(-3px);
+
+    /* 5. Pastikan border hilang/mengikuti */
+    border-color: transparent !important;
+}
+
+/* Utilities & Responsiveness */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif */
+    gap: 1.5rem; /* Jarak antar kartu */
+}
+
+@media (min-width: 768px) {
+    .hero-image {
+        height: 480px; /* Tinggi gambar lebih besar untuk desktop */
+    }
+    .content-wrap {
+        padding: 3.5rem 4rem;
+    }
+    h1.page-title {
+        font-size: 3.5rem;
+    }
+}
+
+/* Accessibility */
+:focus {
+    outline: 4px solid rgba(108, 92, 231, 0.3); /* Outline focus lebih menonjol */
+    outline-offset: 4px;
+}
+
+/* Animasi */
+.fade-in {
+    animation: fadeIn 0.6s ease-out both; /* Animasi lebih lembut */
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* --- Bootstrap Overrides & Custom Components --- */
+
+/* =========================================
+   NAVBAR: CLEAN BAR + LOGO KAPSUL "GEMUK"
+   ========================================= */
+
+body {
+    padding-top: 90px; /* Tambah jarak karena logonya agak besar */
+}
+
+/* Container Navbar (Background Blur) */
+.navbar {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 0.7rem 0; /* Padding vertikal sedikit dilonggarkan */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+/* --- LOGO GEMUK (CAPSULE STYLE) --- */
+/* Ini yang membuat logo terlihat seperti tombol mewah */
+/* =========================================
+   LOGO UTAMA: EFEK SAMA PERSIS DENGAN DUMBBELL
+   ========================================= */
+
+.navbar-brand {
+    background: #ffffff;
+    padding: 6px 20px 6px 6px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    /* Shadow & Border Halus */
+    box-shadow: 0 5px 20px rgba(108, 92, 231, 0.15);
+    border: 1px solid rgba(108, 92, 231, 0.1);
+
+    /* Transisi Container (Naik turun) */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Container naik dikit saat hover */
+.navbar-brand:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.25);
+}
+
+/* --- BAGIAN INI KUNCINYA (Lingkaran Ungu) --- */
+.brand-icon-box {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-accent)
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 10px rgba(108, 92, 231, 0.3);
+
+    /* RUMUS FISIKA SAMA PERSIS DENGAN DUMBBELL */
+    /* cubic-bezier ini yang bikin efek 'membal' / jelly */
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* SAAT DI-HOVER: ROTASI & ZOOM SAMA KAYA DUMBBELL */
+.navbar-brand:hover .brand-icon-box {
+    /* Miring ke kiri 20 derajat & Zoom 1.2x */
+    /* Ini sama style-nya dengan barbel tadi */
+    transform: rotate(-20deg) scale(1.25);
+
+    /* Tambah glow dikit biar makin mirip */
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.5);
+}
+
+/* TEKS LOGO */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    transition: transform 0.3s ease;
+}
+
+/* Teks geser dikit biar dinamis */
+.navbar-brand:hover .brand-text {
+    transform: translateX(4px);
+}
+
+/* Styling Font */
+.brand-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #2d3436;
+    letter-spacing: -0.5px;
+}
+.brand-subtitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   MENU PANDUAN OLAHRAGA (SMOOTH & ELASTIC)
+   ========================================= */
+
+/* 1. Container Menu (Tombol Lonjong) */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px !important;
+    border-radius: 50px;
+
+    /* Transisi warna background halus */
+    transition: all 0.3s ease;
+
+    /* Agar ikon di dalamnya bisa ditransformasi */
+    position: relative;
+}
+
+/* 2. IKON BARBEL (Dumbbell) - Animasi Kuncinya Disini */
+.nav-link i {
+    display: inline-block;
+    color: #b2bec3; /* Warna abu saat diam */
+
+    /* RAHASIA: Pakai rumus 'membal' yang sama dengan logo utama */
+    transition:
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        color 0.3s ease;
+}
+
+/* 3. SAAT MENU DI-HOVER */
+.nav-link:hover {
+    background-color: rgba(108, 92, 231, 0.08); /* Background ungu tipis */
+    color: var(--color-primary) !important;
+}
+
+/* 4. GERAKAN IKON SAAT HOVER */
+.nav-link:hover i {
+    /* Putar miring ke kiri & Membesar dengan efek per/spring */
+    transform: rotate(-25deg) scale(1.3);
+
+    color: var(--color-primary); /* Berubah ungu */
+    filter: drop-shadow(0 2px 4px rgba(108, 92, 231, 0.3)); /* Sedikit glow */
+}
+
+/* KHUSUS SAAT HALAMAN AKTIF */
+.nav-link.active i {
+    color: var(--color-primary);
+    transform: rotate(-20deg); /* Tetap miring sedikit penanda aktif */
+}
+
+/* --- TOMBOL LOGIN --- */
+.btn-login-nav {
+    background: linear-gradient(
+        45deg,
+        var(--color-primary),
+        var(--color-accent)
+    );
+    color: white !important;
+    padding: 10px 25px !important;
+    border-radius: 50px;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-login-nav:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
+}
+
+/* --- RESPONSIVE MOBILE FIX --- */
+@media (max-width: 991px) {
+    /* Logo agak dikecilkan sedikit di HP biar muat */
+    .navbar-brand {
+        padding: 5px 15px 5px 5px;
+        gap: 8px;
+    }
+    .brand-icon-box {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    .brand-title {
+        font-size: 1rem;
+    }
+
+    /* Menu Dropdown HP */
+    .navbar-collapse {
+        background: white;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        border: 1px solid #f0f0f0;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+    .btn-login-nav {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* Perbaikan tombol pada layar kecil: buat tombol utama jadi full width dan hindari overlap */
+@media (max-width: 576px) {
+    .btn-cta,
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline-primary,
+    .btn-login-nav {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        box-shadow: 0 8px 20px rgba(108, 92, 231, 0.12) !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Pastikan tombol di dalam table tidak melebihi sel dan tetap rapi */
+    .table .btn-outline-primary {
+        width: auto !important;
+        padding: 0.6rem 0.9rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* Kurangi kemungkinan overlay oleh elemen lain dengan z-index */
+    .btn-cta,
+    .btn-primary {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Beri jarak bawah agar floating tool browser / share bubble tidak menutupi tombol */
+    .site-container,
+    .card {
+        margin-bottom: 1.6rem !important;
+    }
+}
+
+/* Spesifik: tata letak tombol pada halaman detail panduan */
+@media (max-width: 576px) {
+    .content-wrap .mt-6 {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+    }
+
+    .content-wrap .mt-6 .btn-cta,
+    .content-wrap .mt-6 .btn-secondary-soft,
+    .content-wrap .mt-6 .btn-primary-soft {
+        width: 100% !important;
+        display: block !important;
+        margin: 0 !important;
+        text-align: center !important;
+        padding: 0.85rem 1rem !important;
+        border-radius: 12px !important;
+    }
+
+    /* override utility margin-left (.ms-3) inside this block to avoid shifting */
+    .content-wrap .mt-6 .ms-3 {
+        margin-left: 0 !important;
+    }
+
+    /* tweak WhatsApp hover bubble and floating share button spacing */
+    .btn-wa-hover {
+        position: relative;
+        z-index: 3;
+    }
+
+    /* berikan ruang bawah ekstra agar tombol tidak tertutup oleh browser UI mobile */
+    .hero-card,
+    .site-container,
+    .content-wrap {
+        padding-bottom: 2.5rem !important;
+    }
+}
+
+/* define .btn-primary-soft to match visual hierarchy of other buttons */
+.btn-primary-soft {
+    background: linear-gradient(45deg, var(--color-primary), #8a7ce2);
+    color: #fff;
+    padding: 0.7rem 1.1rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.12);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.btn-primary-soft:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(108, 92, 231, 0.16);
+}
+
+.dropdown-menu {
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+.dropdown-item {
+    color: var(--color-text-dark);
+}
+.dropdown-item:hover {
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+}
+
+/* Card Umum */
+.card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+}
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    font-size: 1.25rem;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+.card-header.bg-primary {
+    background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        #8a7ce2
+    ) !important;
+}
+.card-header.bg-danger {
+    background: linear-gradient(90deg, #e74c3c, #c0392b) !important;
+}
+
+/* Forms */
+.form-label {
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+.form-control,
+.form-select {
+    border-radius: 8px;
+    border-color: var(--color-border);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.2);
+}
+.form-check-input:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.2);
+}
+.form-check-label {
+    color: var(--color-text-dark);
+}
+.btn-primary {
+    background: linear-gradient(45deg, var(--color-primary), #8a7ce2);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+}
+.btn-link {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.btn-link:hover {
+    text-decoration: underline;
+    color: #5b4dd1;
+}
+
+/* Login Page */
+.auth-card {
+    max-width: 450px;
+    margin: 5rem auto;
+    padding: 2.5rem;
+}
+.auth-card .card-header {
+    font-size: 1.8rem;
+    padding: 1.5rem;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-accent)
+    ) !important;
+}
+.auth-card .card-body {
+    padding: 2.5rem;
+}
+.col-form-label {
+    font-weight: 500;
+    text-align: left !important; /* Override text-md-end */
+}
+@media (min-width: 768px) {
+    .col-form-label {
+        text-align: right !important;
+    }
+}
+.auth-card .btn-primary {
+    width: auto; /* Agar tidak full width */
+}
+
+/* Panduan Olahraga Index Page */
+.panduan-card {
+    background: var(--color-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    border: 1px solid var(--color-border);
+    display: flex; /* Menggunakan flexbox untuk tata letak internal */
+    flex-direction: column; /* Konten di dalam kartu vertikal */
+    height: 100%; /* Memastikan kartu memiliki tinggi yang sama di grid */
+}
+.panduan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.panduan-card .img-fluid {
+    width: 100%;
+    height: 180px; /* Tinggi gambar thumbnail */
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.panduan-card .d-flex.align-items-center.justify-content-center {
+    height: 180px; /* Pastikan div placeholder memiliki tinggi yang sama */
+    background-color: var(--color-bg);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+.panduan-card .d-flex.align-items-center.justify-content-center i {
+    color: var(--color-border);
+    font-size: 3rem;
+}
+
+.panduan-card .p-4 {
+    padding: 1.5rem; /* Sesuaikan padding di dalam content wrapper */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Untuk mendorong tombol ke bawah */
+}
+
+.panduan-card h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+.panduan-card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem; /* Ukuran teks deskripsi lebih kecil */
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+.panduan-card .btn {
+    display: inline-flex; /* Agar icon dan teks rapi */
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none; /* Hapus underline default */
+}
+.panduan-card .btn:hover {
+    background-color: #5b4dd1; /* Sedikit lebih gelap saat hover */
+    border-color: #5b4dd1;
+    transform: translateY(-2px); /* Efek naik sedikit */
+}
+
+/* Media query for smaller screens on panduan-card */
+@media (max-width: 767px) {
+    .panduan-card .img-fluid,
+    .panduan-card .d-flex.align-items-center.justify-content-center {
+        height: 200px; /* Gambar lebih tinggi di mobile */
+    }
+}
+
+/* Detail Panduan Olahraga Page */
+.hero-card .content-wrap {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(248, 248, 255, 1) 100%
+    );
+}
+/* Judul di detail panduan */
+h1.page-title {
+    font-size: 2.8rem;
+    text-align: center;
+}
+.hero-card .meta {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Hasil Rekomendasi Page */
+.table {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.table thead th {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    padding: 1.2rem 1rem;
+    border-bottom: none;
+}
+.table tbody tr {
+    background-color: var(--color-card);
+    transition: background-color 0.2s ease;
+}
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+.table tbody td {
+    padding: 1rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+    vertical-align: middle;
+}
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+.table .fw-bold {
+    font-weight: 700 !important;
+}
+.table .fs-3 {
+    font-size: 1.75rem !important;
+    color: var(--color-primary);
+}
+.table .btn-outline-primary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.table .btn-outline-primary:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.2);
+}
+
+/* Alert Info & Danger */
+.alert-info {
+    background-color: #e0f7fa;
+    color: #00838f;
+    border-color: #80deea;
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.alert-info .fa-user-doctor {
+    color: #00acc1;
+    font-size: 1.8rem;
+    margin-right: 1rem;
+}
+
+.card.border-danger {
+    border-color: #e74c3c !important;
+}
+.card.border-danger .card-header.bg-danger {
+    background: linear-gradient(90deg, #e74c3c, #c0392b) !important;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: var(--radius);
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.modal-header {
+    background: linear-gradient(90deg, var(--color-primary), #8a7ce2);
+    color: white;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+}
+.modal-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.modal-body {
+    padding: 2rem;
+    color: var(--color-text-dark);
+}
+.modal-body h5 {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.modal-body h2#modal-nama-olahraga {
+    font-size: 2rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.modal-body #modal-image {
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+.modal-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 1rem 2rem;
+}
+.btn-close-white {
+    filter: brightness(0) invert(1);
+}
+
+/* User Index (Rekomendasi Form) */
+.form-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card.shadow-lg.border-0 .card-header {
+    background: linear-gradient(
+        90deg,
+        var(--color-primary),
+        var(--color-accent)
+    ) !important;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.card.shadow-lg.border-0 .card-body p.text-muted {
+    font-size: 1.05rem;
+}
+.form-check .fa-check-circle {
+    color: #28a745;
+}
+.form-check .fa-triangle-exclamation {
+    color: #dc3545;
+}
+
+/* Global Icons */
+.fa-solid {
+    margin-right: 0.5rem;
+}
+
+/* === FOOTER SUPER PREMIUM UPDATED === */
+.footer-modern {
+    width: 100%;
+    /* Gradient aslimu dipertahankan tapi sedikit diperhalus */
+    background: linear-gradient(
+        180deg,
+        #f3f8ff 0%,
+        #dcfce7 0.01%,
+        #e7f0ff 0%,
+        #d7f7ff 100%
+    );
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-radius: 40px 40px 0 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Background Ambient Glow (Lebih natural di pojok-pojok) */
+.footer-glow-point {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.6;
+}
+.footer-glow-point.left {
+    top: -50px;
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    background: rgba(99, 102, 241, 0.2);
+}
+.footer-glow-point.right {
+    bottom: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    background: rgba(56, 189, 248, 0.2);
+}
+
+.footer-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* LOGO GLOW EFFECT (Dari kodemu, dipertahankan) */
+.footer-logo-large {
+    height: 70px; /* Sedikit diperkecil agar proporsional dengan grid */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(0, 119, 255, 0.45));
+    animation: softPulse 3s infinite ease-in-out;
+}
+
+@keyframes softPulse {
+    0% {
+        filter: drop-shadow(0 0 8px rgba(0, 119, 255, 0.35));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 16px rgba(0, 119, 255, 0.55));
+        transform: scale(1.02);
+    }
+    100% {
+        filter: drop-shadow(0 0 8px rgba(0, 119, 255, 0.35));
+        transform: scale(1);
+    }
+}
+
+/* LINK STYLES (New) */
+.footer-links li {
+    margin-bottom: 10px;
+}
+.footer-links a {
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.footer-links a:hover {
+    color: #0d6efd;
+    transform: translateX(5px); /* Efek geser kanan */
+}
+
+/* SOCIAL BUTTONS (New) */
+.social-btn {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0d6efd;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.social-btn:hover {
+    background: #0d6efd;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Divider & Bottom */
+.footer-divider {
+    opacity: 0.15;
+    margin: 30px 0;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .footer-modern {
+        text-align: center; /* Rata tengah di HP */
+    }
+    .footer-logo-large {
+        height: 60px;
+        margin-bottom: 10px;
+    }
+    .d-flex.align-items-center {
+        flex-direction: column; /* Logo di atas teks di HP */
+        text-align: center;
+    }
+    .ms-3 {
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+    .d-flex.align-items-start {
+        justify-content: center;
+        text-align: left; /* Kotak info dokter tetap rata kiri isinya, tapi posisinya center */
+        display: inline-flex !important;
+    }
+    .footer-links a:hover {
+        transform: none;
+    }
+    .d-flex.gap-2 {
+        justify-content: center;
+    }
+}
+
+/* Styling Khusus Halaman Metode SAW */
+
+/* Typography Overrides */
+.display-5 {
+    font-weight: 700;
+    color: #2c3e50;
+    letter-spacing: -0.5px;
+}
+
+/* Feature Cards */
+.saw-feature-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.saw-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Icon Squares */
+.icon-square {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+}
+
+.bg-blue-light {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+.bg-green-light {
+    background-color: rgba(25, 135, 84, 0.1);
+}
+.bg-orange-light {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+/* Table Styling */
+.table th {
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: none;
+}
+
+.table td {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.02);
+}
+
+/* Formula & Math Section */
+.math-box {
+    border: 1px dashed #cbd5e1;
+    color: #1e293b;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.formula-card {
+    border-color: #e2e8f0 !important;
+}
+
+/* Badge Customization */
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+    .display-5 {
+        font-size: 2rem;
+    }
+    .icon-square {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}

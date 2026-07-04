@@ -1,0 +1,72 @@
+# 1. Buat proyek Laravel 11 baru
+composer create-project laravel/laravel spk-saw-lansia
+
+# 2. Masuk ke direktori
+cd spk-saw-lansia
+
+# 3. Instal UI bawaan (Bootstrap 5)
+composer require laravel/ui
+php artisan ui bootstrap --auth
+
+# 4. Instal NPM dependencies & build
+npm install
+npm run dev harus dijalankan
+php artisan serve untun running program
+
+# 5. Atur file .env Anda
+
+# 6. Jika Anda mengganti nama folder lagi — langkah pencegahan / cara perbaikan cepat
+
+Setelah mengganti nama folder proyek, jalankan ulang pembuatan link storage agar junction menunjuk ke lokasi yang benar:
+PowerShell (jalankan terpisah, satu per satu):
+
+Remove-Item "C:\xampp\htdocs\<NAMA_PROYEK>\public\storage" -Recurse -Force
+php artisan storage:link
+
+Atau (jika rmdir lebih familiar):
+
+rmdir "C:\xampp\htdocs\<NAMA_PROYEK>\public\storage"
+php artisan storage:link
+
+# 7. untuk bikin password yang di hash dan dimasukan ke dalam localserver secara manual tanpa migrasi seeder
+Mau password-nya Garena#123?
+
+Buka terminal -> php artisan tinker.
+
+Ketik echo Hash::make('ketik password yang mau kamu hash'); -> Enter.
+
+Copy hash yang muncul.
+
+Paste di kolom password di phpMyAdmin.
+
+# 8. Sandi aplikasi akun google ardhanadkm
+Laravel Skripsi : oebi ekgy huny kgyz
+cara membuat : 
+
+👉 https://myaccount.google.com/apppasswords
+
+(Nanti akan diminta login password email sekali lagi untuk keamanan)
+
+Cara Mengisinya (Setelah link dibuka):
+Pilih Aplikasi: Klik dan pilih "Lainnya (Nama kustom)".
+
+Tulis Nama: Ketik bebas, misal: Laravel Skripsi.
+
+Klik tombol BUAT.
+
+Akan muncul 16 huruf di kotak kuning.
+
+Copy kode itu dan masukkan ke .env di bagian MAIL_PASSWORD.
+
+# 9. Bersihkan configurasi yang masih jalan 
+php artisan config:cache
+- running agar perangkat apa saja bisa masuk 
+php artisan serve --host=0.0.0.0 --port=8000
+- Untuk running di website
+http://192.168.0.252:8000
+http://localhost:8000
+- Clear cache bootstrap
+php artisan optimize:clear
+- refresh konfigurasi
+php artisan config:clear
+php artisan view:clear  
