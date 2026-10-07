@@ -1,88 +1,178 @@
 @extends('layouts.app')
 
+@section('title', 'Panduan Gerakan: ' . $panduan->nama)
+
 @section('content')
-    <div class="site-container">
-        <div class="max-w-4xl mx-auto hero-card fade-in">
+<div class="container py-4">
+
+    <!-- BREADCRUMB NAVIGATION -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('panduan-olahraga.index') }}">Panduan Olahraga</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ $panduan->nama }}</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <!-- HERO CARD / BANNER -->
             @if ($panduan->gambar)
-                <div style="background:linear-gradient(90deg, rgba(79,70,229,0.04), rgba(6,182,212,0.02));">
-                    <img src="{{ asset('storage/' . $panduan->gambar) }}" alt="{{ $panduan->nama }}" class="hero-image">
+                <div class="detail-hero-banner">
+                    <img src="{{ asset('storage/' . $panduan->gambar) }}" alt="{{ $panduan->nama }}" class="img-fluid">
                 </div>
             @endif
 
-            <div class="content-wrap">
-                <h1 class="page-title text-center">{{ $panduan->nama }}</h1>
-                <p class="meta text-center">Panduan olahraga lansia — dirancang untuk aman dan mudah diikuti</p>
-
-                <div class="mt-5">
-                    <h2 class="section-title">Deskripsi</h2>
-                    <p class="prose">{{ $panduan->deskripsi_singkat }}</p>
+            <!-- MAIN CONTENT ARTICLE WRAPPER -->
+            <div class="detail-hero-content">
+                <div class="text-center mb-4">
+                    <span class="badge badge-primary-soft mb-2">Panduan Aktivitas Fisik Lansia</span>
+                    <h1 class="page-title mb-2 text-dark">{{ $panduan->nama }}</h1>
+                    <p class="text-muted senior-text-lg">Dirancang khusus agar aman, terukur, dan mudah dilakukan secara mandiri maupun berkelompok.</p>
                 </div>
 
-                <div class="mt-5">
-                    <h2 class="section-title">Tata Cara</h2>
-                    <div class="prose">
-                        {!! nl2br(e($panduan->tata_cara)) !!}
+                <!-- QUICK SPECS BAR -->
+                <div class="detail-quick-specs">
+                    <div class="spec-item">
+                        <div class="spec-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <div class="spec-info-title">Durasi Ideal</div>
+                            <div class="spec-info-val">{{ $panduan->durasi_ideal ?? '20 - 30 Menit' }}</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <div class="spec-icon" style="color: var(--color-emerald);">
+                            <i class="fa-solid fa-gauge"></i>
+                        </div>
+                        <div>
+                            <div class="spec-info-title">Intensitas</div>
+                            <div class="spec-info-val">Ringan - Sedang</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <div class="spec-icon" style="color: var(--color-accent);">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <div class="spec-info-title">Frekuensi</div>
+                            <div class="spec-info-val">3 - 5x Seminggu</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <div class="spec-icon" style="color: var(--color-amber);">
+                            <i class="fa-solid fa-shield-heart"></i>
+                        </div>
+                        <div>
+                            <div class="spec-info-title">Keamanan</div>
+                            <div class="spec-info-val">Minim Benturan</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mt-5">
-                    <h2 class="section-title">Manfaat</h2>
-                    <ul class="benefit-list">
+                <!-- SECTION 1: DESKRIPSI -->
+                <div class="my-5">
+                    <h3 class="fw-bold text-dark mb-3">
+                        <i class="fa-solid fa-circle-info text-primary me-2"></i>Tentang Olahraga Ini
+                    </h3>
+                    <p class="senior-text-lg lh-lg text-body">
+                        {{ $panduan->deskripsi_singkat ?? $panduan->deskripsi_umum }}
+                    </p>
+                </div>
+
+                <!-- SECTION 2: MANFAAT KESEHATAN -->
+                <div class="my-5">
+                    <h3 class="fw-bold text-dark mb-3">
+                        <i class="fa-solid fa-heart-pulse text-success me-2"></i>Manfaat Utama Bagi Lansia
+                    </h3>
+                    <div class="row g-3">
                         @foreach (explode("\n", $panduan->manfaat) as $manfaat)
                             @if (trim($manfaat))
-                                <li class="d-flex align-items-start">
-                                    <span style="color:var(--color-accent); margin-right:.6rem;">
-                                        <i class="fa-solid fa-heart-pulse"></i>
-                                    </span>
-                                    <span class="prose">{{ trim($manfaat) }}</span>
-                                </li>
+                                <div class="col-md-6">
+                                    <div class="benefit-item-modern h-100">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span class="senior-text-lg text-dark">{{ trim($manfaat) }}</span>
+                                    </div>
+                                </div>
                             @endif
                         @endforeach
-                    </ul>
+                    </div>
                 </div>
 
-                <div class="mt-6 text-center">
-                    <a href="{{ route('panduan-olahraga.index') }}" class="btn-cta">
-                        <i class="fa-solid fa-arrow-left-long"></i>
-                        Kembali ke daftar
-                    </a>
-                    <a href="#" onclick="bagikanKeWA(event)" class="btn-secondary-soft btn-wa-hover ms-3">
-                        <i class="fa-brands fa-whatsapp fa-lg"></i>
-                        Bagikan
-                    </a>
-                    <a href="{{ route('panduan-olahraga.download', $panduan->id) }}" class="btn-primary-soft ms-3">
-                        <i class="fa-solid fa-download"></i>
-                        Unduh PDF
-                    </a>
-
-                    <script>
-                        function bagikanKeWA(event) {
-                            // Mencegah link href="#" standar berjalan
-                            event.preventDefault();
-
-                            // 1. Tentukan Pesan Anda
-                            // Kita ambil judul halaman
-                            var judulHalaman = document.title;
-
-                            // 2. Tentukan URL yang ingin dibagikan
-                            // Kita ambil URL halaman saat ini
-                            var urlHalaman = window.location.href;
-
-                            // 3. Gabungkan pesan
-                            var pesan = 'Hai, cek halaman keren ini: ' + judulHalaman + ' \n\n' + urlHalaman;
-
-                            // 4. Encode pesan untuk URL
-                            var pesanEncoded = encodeURIComponent(pesan);
-
-                            // 5. Buat link WhatsApp
-                            var linkWA = 'https://wa.me/?text=' + pesanEncoded;
-
-                            // 6. Buka link di tab baru
-                            window.open(linkWA, '_blank');
-                        }
-                    </script>
+                <!-- SECTION 3: TATA CARA PELAKSANAAN -->
+                <div class="my-5">
+                    <h3 class="fw-bold text-dark mb-3">
+                        <i class="fa-solid fa-list-ol text-primary me-2"></i>Langkah-Langkah Pelaksanaan yang Benar
+                    </h3>
+                    <div class="mt-4">
+                        @php
+                            $steps = explode("\n", $panduan->tata_cara);
+                            $stepIndex = 1;
+                        @endphp
+                        @foreach ($steps as $step)
+                            @if (trim($step))
+                                <div class="step-guide-card">
+                                    <div class="step-guide-number">{{ $stepIndex++ }}</div>
+                                    <div class="senior-text-lg text-dark flex-grow-1">
+                                        {{ trim($step) }}
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
+
+                <!-- SECTION 4: PERINGATAN KESELAMATAN MEDIS -->
+                <div class="p-4 rounded-4 bg-light border border-warning border-opacity-50 my-5">
+                    <div class="d-flex align-items-start gap-3">
+                        <i class="fa-solid fa-triangle-exclamation text-warning fs-2 mt-1"></i>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-2">Petunjuk Keselamatan Saat Latihan</h5>
+                            <ul class="mb-0 text-muted senior-text-lg ps-3">
+                                <li>Kenakan pakaian longgar dan sepatu dengan alas anti-slip.</li>
+                                <li>Pastikan sirkulasi udara baik bila berolahraga di dalam ruangan.</li>
+                                <li>Selalu siapkan air minum dan hindari menahan napas saat melakukan gerakan peregangan.</li>
+                                <li>Bila timbul keluhan pusing, nyeri dada, atau napas tersengal-sengal, segera hentikan latihan dan duduk bersandar.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS TOOLBAR -->
+                <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 pt-4 border-top">
+                    <a href="{{ route('panduan-olahraga.index') }}" class="btn btn-secondary btn-lg">
+                        <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Daftar
+                    </a>
+
+                    <a href="#" onclick="bagikanKeWA(event)" class="btn btn-whatsapp btn-lg">
+                        <i class="fa-brands fa-whatsapp fa-lg me-1"></i> Bagikan ke WhatsApp
+                    </a>
+
+                    <a href="{{ route('panduan-olahraga.download', $panduan->id) }}" class="btn btn-primary btn-lg">
+                        <i class="fa-solid fa-file-arrow-down me-1"></i> Unduh Dokumen PDF
+                    </a>
+                </div>
+
             </div>
+
         </div>
     </div>
+</div>
+
+@push('scripts')
+<script>
+    function bagikanKeWA(event) {
+        event.preventDefault();
+        const judul = document.title;
+        const url = window.location.href;
+        const pesan = `Halo, cek panduan olahraga lansia yang sangat bermanfaat ini: *${judul}*\n\n${url}`;
+        window.open(`https://wa.me/?text=${encodeURIComponent(pesan)}`, '_blank');
+    }
+</script>
+@endpush
 @endsection
